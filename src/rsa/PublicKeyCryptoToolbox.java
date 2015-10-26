@@ -3,6 +3,7 @@ package rsa;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Vector;
+import rsa.EEAResult;
 
 public class PublicKeyCryptoToolbox {
 	// / Secure pseudo random number generator
@@ -18,13 +19,26 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 6a below this comment!
 		 ************************************************************/
-
-		// Remove this line!
-		return new EEAResult(new BigInteger("0"), 
-				new BigInteger("0"), 
-				new BigInteger("0"), 
-				new BigInteger("0"), 
-				new BigInteger("0"));
+		if(b.compareTo(new BigInteger("0")) == 0)
+		{
+			return new EEAResult(a, 
+					b, 
+					a, 
+					new BigInteger("1"), 
+					new BigInteger("0"));
+		}
+		else
+		{
+			//Compute previous result of the algorithm
+			EEAResult eeaPrevResult = extendedEuclideanAlgorithm(b,b.mod(a));
+			
+			//Return d, y, x
+			return new EEAResult(eeaPrevResult.getA(), 
+					eeaPrevResult.getB(), 
+					eeaPrevResult.getD(), 
+					eeaPrevResult.getY(), 
+					eeaPrevResult.getX().subtract((a.divide(b)).multiply(eeaPrevResult.getY())));
+		}
 	}
 
 	static public BigInteger modExp(BigInteger a, BigInteger b, BigInteger m) {
