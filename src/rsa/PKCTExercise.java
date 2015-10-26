@@ -58,13 +58,13 @@ public class PKCTExercise {
 		 ************************************************************/
 
 	}
-	
+
 	void run() {
 		/*
 		 * Uncomment the method after completion of the
                  * respective exercise!
 		 */
-		//eeaResultExercise();
+		eeaResultExercise();
 		//euclidExercise();
 		//modExpExercise();
 		//randomNumbers();

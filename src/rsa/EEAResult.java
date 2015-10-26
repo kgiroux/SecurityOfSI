@@ -65,10 +65,12 @@ public class EEAResult {
 		
 		/************************************************************
 		 * Insert the code of Exercise 5a below this comment!
-		 ************************************************************/
-		
-		// Remove this line!!!
-		return false;
+		 **************1**********************************************/
+		if(d.compareTo(new BigInteger("1")) == 1){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	/**
@@ -81,8 +83,10 @@ public class EEAResult {
 		/************************************************************
 		 * Insert the code of Exercise 5b below this comment!
 		 ************************************************************/
-		
-		// Remove this line!!!
-		return new BigInteger("0");
+		if(d.compareTo(new BigInteger("1")) != 1){
+			return new BigInteger("0");
+		}else{
+			return (x.mod(b));
+		}
 	}
 }
