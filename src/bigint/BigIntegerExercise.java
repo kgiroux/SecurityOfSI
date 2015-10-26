@@ -32,7 +32,15 @@ public class BigIntegerExercise {
 		/************************************************************
 		 * Insert the code of Exercise 3 below this comment!
 		 ************************************************************/
-
+		BigInteger a = new BigInteger("781"), b = new BigInteger("12891");
+		
+		//Compare
+		if(a.compareTo(b) == 0)
+			System.out.println("b="+b+" is equal to a="+a+".");
+		else if(a.compareTo(b) < 0)
+			System.out.println("b="+b+" is greather than a="+a+".");
+		else if(a.compareTo(b) > 0)
+			System.out.println("a="+a+" is greather than b="+b+".");
 	}
 
 	void randomNumbers() {
@@ -59,7 +67,7 @@ public class BigIntegerExercise {
 		 * Uncomment the method after the implementation!
 		 */
 		expression();
-		//comparison();
+		comparison();
 		randomNumbers();
 	}
 
