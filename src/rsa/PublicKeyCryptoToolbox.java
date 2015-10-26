@@ -2,6 +2,7 @@ package rsa;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class PublicKeyCryptoToolbox {
@@ -27,14 +28,31 @@ public class PublicKeyCryptoToolbox {
 				new BigInteger("0"));
 	}
 
+	private static ArrayList<Integer> listBit(BigInteger a){
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		System.out.print("Binary representation of " + a + ": ");
+		for (int i=a.bitLength()-1; i>=0; i--) {
+			if (a.testBit(i)==true) {
+				System.out.print("1");
+				list.add(1);
+			} else {
+				System.out.print("0");
+				list.add(0);
+			}
+		}
+		System.out.println("");
+		return list;
+	}
+	
 	static public BigInteger modExp(BigInteger a, BigInteger b, BigInteger m) {
 
 		/************************************************************
 		 * Insert the code of Exercise 7a below this comment!
 		 ************************************************************/
-
-		// Remove this line!
-		return new BigInteger("0");
+		ArrayList<Integer> list = listBit(b);
+		for(int i : list ){
+			
+		}
 	}
 
 	public BigInteger randomInteger(int bit_length) {
