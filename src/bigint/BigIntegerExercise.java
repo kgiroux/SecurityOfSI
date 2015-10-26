@@ -2,6 +2,7 @@ package bigint;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 
 public class BigIntegerExercise {
 
@@ -20,7 +21,7 @@ public class BigIntegerExercise {
 
 		BigInteger a = new BigInteger("512"),b = new BigInteger("102"),c = new BigInteger("3"),d = new BigInteger("761"),result;
 		result = ((a.multiply(b)).subtract(c)).divide(c).add((d.multiply(d)).subtract((a.subtract(b))));
-		
+		System.out.println(result);
 		
 	}
 
@@ -41,16 +42,25 @@ public class BigIntegerExercise {
 		/************************************************************
 		 * Insert the code of Exercise 4 below this comment!
 		 ************************************************************/
-
+		SecureRandom prng = new SecureRandom();
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		list.add(64);
+		list.add(128);
+		list.add(256);
+		list.add(512);
+		list.add(1024);
+		list.add(2048);
+		for (int i : list)
+			System.out.println(new BigInteger(i,prng));
 	}
 
 	public void run() {
 		/*
 		 * Uncomment the method after the implementation!
 		 */
-		//expression();
+		expression();
 		//comparison();
-		//randomNumbers();
+		randomNumbers();
 	}
 
 	public static void main(String[] args) {
