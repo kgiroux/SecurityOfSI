@@ -13,8 +13,9 @@ public class PKCTExercise {
 		/************************************************************
 		 * Insert the code of Exercise 5a+b below this comment!
 		 ************************************************************/
-		
-		
+		EEAResult eearesult = new EEAResult(new BigInteger("8002109"), new BigInteger("7186131"), new BigInteger("1"), new BigInteger("-2996671"), new BigInteger("3336940"));
+		System.out.println("Prime Number : " + eearesult.isRelativlyPrime());
+		System.out.println("Inverse result : " + eearesult.getInverse());
 	}
 
 	void euclidExercise() {
