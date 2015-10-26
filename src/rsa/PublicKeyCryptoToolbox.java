@@ -50,6 +50,7 @@ public class PublicKeyCryptoToolbox {
 		 * Insert the code of Exercise 7a below this comment!
 		 ************************************************************/
 		ArrayList<Integer> list = listBit(b);
+		BigInteger d = new BigInteger("1");
 		for(int i : list ){
 			
 		}
