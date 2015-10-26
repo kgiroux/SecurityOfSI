@@ -31,11 +31,11 @@ public class PublicKeyCryptoToolbox {
 		else
 		{
 			//Compute previous result of the algorithm
-			EEAResult eeaPrevResult = extendedEuclideanAlgorithm(b,b.mod(a));
+			EEAResult eeaPrevResult = extendedEuclideanAlgorithm(b,a.mod(b));
 			
 			//Return d, y, x
-			return new EEAResult(eeaPrevResult.getA(), 
-					eeaPrevResult.getB(), 
+			return new EEAResult(a, 
+					b, 
 					eeaPrevResult.getD(), 
 					eeaPrevResult.getY(), 
 					eeaPrevResult.getX().subtract((a.divide(b)).multiply(eeaPrevResult.getY())));

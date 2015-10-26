@@ -29,6 +29,21 @@ public class PKCTExercise {
 		 * Insert the code of Exercise 6b+c below this comment!
 		 ************************************************************/
 		
+		/* Question b */
+		BigInteger a = new BigInteger("7019544"), b = new BigInteger("8135112");
+		
+		//Perform eea algorythm
+		EEAResult result = PublicKeyCryptoToolbox.extendedEuclideanAlgorithm(a,b);
+		System.out.println("Result1 -- d="+result.getD()+" and x="+result.getX()+" and y="+result.getY()+".");
+	
+		/* Question c */
+		BigInteger a1 = new BigInteger("7186131");
+		BigInteger b2 = new BigInteger("8002109");
+		
+		EEAResult result2 = PublicKeyCryptoToolbox.extendedEuclideanAlgorithm(a1,b2);
+		System.out.println("Result2 -- d="+result2.getD()+" and x="+result2.getX()+" and y="+result2.getY()+".");
+		System.out.println("Invertible modulo:"+result2.isRelativlyPrime()+" and inverse is:"+result2.getInverse());
+		
 	}
 	
 	void modExpExercise() {
@@ -76,7 +91,7 @@ public class PKCTExercise {
                  * respective exercise!
 		 */
 		eeaResultExercise();
-		//euclidExercise();
+		euclidExercise();
 		modExpExercise();
 		randomNumbers();
 		//primalityTest();
