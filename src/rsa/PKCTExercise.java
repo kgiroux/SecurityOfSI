@@ -3,6 +3,8 @@ package rsa;
 import java.math.BigInteger;
 import java.util.Vector;
 
+import com.sun.corba.se.impl.ior.NewObjectKeyTemplateBase;
+
 public class PKCTExercise {
 	
 	void eeaResultExercise() {
@@ -37,13 +39,21 @@ public class PKCTExercise {
 		 * Insert the code of Exercise 6b+c below this comment!
 		 ************************************************************/
 
+		BigInteger b = PublicKeyCryptoToolbox.modExp(new BigInteger("17"), new BigInteger("1005"), new BigInteger("230"));
+		System.out.println("Result of Mod Exp : " +b);
 		
+		BigInteger result = new BigInteger("17").modPow(new BigInteger("1005"), new BigInteger("230"));
+		System.out.println("Result of Mod Exp : " +result);
 	}
 	
 	void randomNumbers() {
 		System.out.println("\nExercise 8:");
 		System.out.println("===========\n");
-
+		PublicKeyCryptoToolbox result = new PublicKeyCryptoToolbox();
+		for(int i = 0; i<20; i++){
+			BigInteger big = result.randomInteger(new BigInteger("102030405060708090"));
+			System.out.println("Result : "+ big + " Result compare : " + big.compareTo(new BigInteger("102030405060708090")));
+		}
 		/************************************************************
 		 * Insert the code of Exercise 8c below this comment!
 		 ************************************************************/
@@ -67,8 +77,8 @@ public class PKCTExercise {
 		 */
 		eeaResultExercise();
 		//euclidExercise();
-		//modExpExercise();
-		//randomNumbers();
+		modExpExercise();
+		randomNumbers();
 		//primalityTest();
 	}
 	

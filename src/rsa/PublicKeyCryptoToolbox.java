@@ -63,11 +63,14 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 7a below this comment!
 		 ************************************************************/
-		ArrayList<Integer> list = listBit(b);
 		BigInteger d = new BigInteger("1");
-		for(int i : list ){
-			
+		for (int i=b.bitLength()-1; i>=0; i--) {
+			d = d.multiply(d).mod(m);
+			if (b.testBit(i)==true) {
+				d = d.multiply(a).mod(m);
+			}
 		}
+		return d;
 	}
 
 	public BigInteger randomInteger(int bit_length) {
@@ -75,19 +78,22 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 7a below this comment!
 		 ************************************************************/
-
-		// Remove this line!
-		return new BigInteger("0");
-	}
+		return new BigInteger(bit_length,prng);
+	}	
 
 	public BigInteger randomInteger(BigInteger n) {
 
 		/************************************************************
 		 * Insert the code of Exercise 7b below this comment!
 		 ************************************************************/
-
+		
 		// Remove this line!
-		return new BigInteger("0");
+		int nbBit = n.bitLength();
+		BigInteger result;
+		do{
+			result = new BigInteger(nbBit,prng);
+		}while(result.compareTo(new BigInteger("1")) <0 || result.compareTo(n) > 0);
+		return result;
 	}
 
 	public boolean witness(BigInteger a, BigInteger n) {
