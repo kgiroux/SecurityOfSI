@@ -108,6 +108,13 @@ public class PKCTExercise {
 		System.out.format("%s%10s\n", a7,publicKeyToolbox.millerRabinTest(a7,s));
 		System.out.format("%s%10s\n", a8,publicKeyToolbox.millerRabinTest(a8,s));
 		
+		//Generate random prime numbers
+		System.out.format("Generation of random prime numbers\n");
+		System.out.println("=================================\n");
+		System.out.format("Prime number with a length of 128 bits => "+ publicKeyToolbox.randomPrime(128,100) +"\n");
+		System.out.format("Prime number with a length of 256 bits => "+ publicKeyToolbox.randomPrime(256,100) +"\n");
+		System.out.format("Prime number with a length of 512 bits => "+ publicKeyToolbox.randomPrime(512,100) +"\n");
+		System.out.format("Prime number with a length of 1024 bits => "+ publicKeyToolbox.randomPrime(1024,100) +"\n");
 		
 	}
 

@@ -20,7 +20,7 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 6a below this comment!
 		 ************************************************************/
-		if(b.compareTo(new BigInteger("0")) == 0)
+		if(b.compareTo(BigInteger.ZERO) == 0)
 		{
 			return new EEAResult(a, 
 					b, 
@@ -99,21 +99,21 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 8a below this comment!
 		 ************************************************************/
-		BigInteger d = new BigInteger("1"),one = new BigInteger("1"), nMinus1 = n.subtract(one);
+		BigInteger d = new BigInteger("1"), nMinus1 = n.subtract(BigInteger.ONE);
 		BigInteger x;
 		
-		for (int i= nMinus1.bitLength(); i>0; i--) 
+		for (int i= nMinus1.bitLength(); i>=0; i--) 
 		{
 			x = d;
 			d = (d.multiply(d)).mod(n);
 			
-			if((d.compareTo(one) == 0) && (x.compareTo(one) != 0) && (x.compareTo(nMinus1) != 0))
+			if((d.compareTo(BigInteger.ONE) == 0) && (x.compareTo(BigInteger.ONE) != 0) && (x.compareTo(nMinus1) != 0))
 				return true;
-			if(n.testBit(i) == true)
+			if(nMinus1.testBit(i) == true)
 				d = (d.multiply(a)).mod(n);
 		}
 		
-		if(d.compareTo(one) != 0)
+		if(d.compareTo(BigInteger.ONE) != 0)
 			return true;
 			
 		return false;		
@@ -126,7 +126,7 @@ public class PublicKeyCryptoToolbox {
 		 ************************************************************/
 		BigInteger a;
 		
-		for(int i = 1; i < s; i++)
+		for(int i = 1; i <= s; i++)
 		{
 			a = randomInteger(n.subtract(new BigInteger("1")));
 			
@@ -140,10 +140,21 @@ public class PublicKeyCryptoToolbox {
 
 		/************************************************************
 		 * Insert the code of Exercise 8d below this comment!
-		 ************************************************************/
+		 ************************************************************/		
+		BigInteger result,n;
+		boolean isPrime = false;
 		
-		// Remove this line!
-		return new BigInteger("0");
+		do
+		{
+			//Potential prime number
+			n = randomInteger(bit_length);
+			
+			//Test if the number is prime or not with the millerRabinTest
+			isPrime = millerRabinTest(n,s);
+		}
+		while(!isPrime);//Do until to find a prime number
+		
+		return n;
 	}
 
 }
