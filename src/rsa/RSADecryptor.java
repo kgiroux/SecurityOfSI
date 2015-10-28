@@ -8,6 +8,7 @@ import java.util.Vector;
 /**
  * 
  * RSA Decryption
+ * @author Kévin Giroux & Kévin PACE
  *
  */
 public class RSADecryptor {

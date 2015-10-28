@@ -1,5 +1,10 @@
 package rsa;
 
+/**
+ * @author Kévin Giroux & Kévin Pace
+ */
+
+
 import java.math.BigInteger;
 import java.util.Vector;
 

@@ -1,5 +1,7 @@
 package rsa;
-
+/**
+ * @author Kévin Giroux & Kévin Pace
+ */
 import java.math.BigInteger;
 
 public class EEAResult {

@@ -1,5 +1,7 @@
 package rsa;
-
+/**
+ * @author Kévin Giroux & Kévin Pace
+ */
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.util.Vector;
