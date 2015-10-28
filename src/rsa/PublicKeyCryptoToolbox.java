@@ -86,8 +86,6 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 7b below this comment!
 		 ************************************************************/
-		
-		// Remove this line!
 		int nbBit = n.bitLength();
 		BigInteger result;
 		do{
