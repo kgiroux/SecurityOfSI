@@ -23,14 +23,27 @@ public class RSAExercise {
 		BigInteger d = BigInteger.ZERO;;
 		BigInteger e = BigInteger.ZERO;;
 		
-		int bit_length=128;
+		int bit_length=256;
 		int s=50;
 
 		/************************************************************
 		 * Insert the code of Exercise 10 below this comment!
 		 ************************************************************/
+		do{
+			p = pkct.randomPrime(bit_length, s);
+			q = pkct.randomPrime(bit_length, s);
+		}while(p.compareTo(q) == 0);
 		
-				
+		n = p.multiply(q);
+		phin = (p.subtract(BigInteger.ONE)).multiply((q.subtract(BigInteger.ONE)));
+		EEAResult eea;
+		do{
+			e = pkct.randomInteger(phin);
+			eea = PublicKeyCryptoToolbox.extendedEuclideanAlgorithm(e, phin);
+		}while(!eea.isRelativlyPrime());
+		
+		d = eea.getInverse();
+		
 		/************************************************************
 		 * Do NOT change anyting below this line!
 		 ************************************************************/
