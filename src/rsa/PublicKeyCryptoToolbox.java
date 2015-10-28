@@ -101,9 +101,24 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 8a below this comment!
 		 ************************************************************/
-
-		// Remove this line!
-		return false;
+		BigInteger d = new BigInteger("1"),one = new BigInteger("1"), nMinus1 = n.subtract(one);
+		BigInteger x;
+		
+		for (int i= nMinus1.bitLength(); i>0; i--) 
+		{
+			x = d;
+			d = (d.multiply(d)).mod(n);
+			
+			if((d.compareTo(one) == 0) && (x.compareTo(one) != 0) && (x.compareTo(nMinus1) != 0))
+				return true;
+			if(n.testBit(i) == true)
+				d = (d.multiply(a)).mod(n);
+		}
+		
+		if(d.compareTo(one) != 0)
+			return true;
+			
+		return false;		
 	}
 
 	public boolean millerRabinTest(BigInteger n, int s) {
@@ -111,9 +126,16 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 8b below this comment!
 		 ************************************************************/
+		BigInteger a;
 		
-		// Remove this line!
-		return false;
+		for(int i = 1; i < s; i++)
+		{
+			a = randomInteger(n.subtract(new BigInteger("1")));
+			
+			if(witness(a,n))
+				return false;
+		}
+		return true;
 	}
 
 	public BigInteger randomPrime(int bit_length, int s) {
