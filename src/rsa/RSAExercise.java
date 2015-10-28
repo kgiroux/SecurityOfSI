@@ -30,6 +30,7 @@ public class RSAExercise {
 		 * Insert the code of Exercise 10 below this comment!
 		 ************************************************************/
 		do{
+			System.out.println("Prime Number");
 			p = pkct.randomPrime(bit_length, s);
 			q = pkct.randomPrime(bit_length, s);
 		}while(p.compareTo(q) == 0);
@@ -38,6 +39,7 @@ public class RSAExercise {
 		phin = (p.subtract(BigInteger.ONE)).multiply((q.subtract(BigInteger.ONE)));
 		EEAResult eea;
 		do{
+			System.out.println("E Number");
 			e = pkct.randomInteger(phin);
 			eea = PublicKeyCryptoToolbox.extendedEuclideanAlgorithm(e, phin);
 		}while(!eea.isRelativlyPrime());
@@ -59,16 +61,37 @@ public class RSAExercise {
 	public void rsaExercise() {
 		System.out.println("\nExercise 11 and 12:");
 		System.out.println("===================\n");
-
+		
 		/************************************************************
 		 * Insert the code of Exercise 11c+d+e below this comment!
 		 ************************************************************/
+		/* Result from the exercice 10 */
+		BigInteger p = new BigInteger("60596909050554535322018832395292671176241138862163817977936136025771437418437");
+		BigInteger q = new BigInteger("29127301864985001880463831323413699208448142024369716579166507805948905942551");
+		BigInteger n = p.multiply(q);
+		BigInteger d = new BigInteger("282650890032163342434592053844311849115939428489447630808922315262487863440534007596373556993306017120227938670078951319834044632392034542700783436109591");
+		BigInteger e = new BigInteger("553707702318832998541705097016459208283578517284116659965483692119998440754681522671004761974877108958254788979509811041402185546965394125556867876258511");
 		
+		/* Plain text to encrypt */
+		String x = "Security Programming Courses are fun";
+		System.out.println("String before encryption : " + x);
+		RSAEncryptor rsaEncryptor = new RSAEncryptor(n, e);
+		/*11.d */
+		BigInteger tempResultBigInteger = rsaEncryptor.stringToBigInteger(x);
+		BigInteger encryptedMessage = rsaEncryptor.encrypt(tempResultBigInteger);
+		/*11.e */
+		Vector<BigInteger> encryptedVector = rsaEncryptor.encrypt(x);
 
 		/************************************************************
 		 * Insert the code of Exercise 12c+d+e below this comment!
 		 ************************************************************/
-
+		/*12.c*/
+		RSADecryptor rsaDecryptor = new RSADecryptor(p, q, d);
+		String resultDecryption = rsaDecryptor.bigIntegerToString(rsaDecryptor.decrypt(encryptedMessage));
+		System.out.println("REsult from decryption : " + resultDecryption);
+		/* 12.d */
+		String resultVectorDecryption = rsaDecryptor.decrypt(encryptedVector);
+		System.out.println("Result from vector decryption : " + resultVectorDecryption);
 	}
 	
 	public void finalTestPreparation() {
@@ -131,10 +154,10 @@ public class RSAExercise {
 		/*
 		 * Uncomment the methods after the implementation
 		 */
-		//rsaParamsExercise();
-		//rsaExercise();
+		rsaParamsExercise();
+		rsaExercise();
 		//finalTestPreparation();
-		//finalTest();
+		finalTest();
 	}
 	
 	

@@ -34,7 +34,7 @@ public class RSADecryptor {
 		/************************************************************
 		 * Insert the code of Exercise 10b below this comment!
 		 ************************************************************/
-		return new BigInteger("0");
+		return PublicKeyCryptoToolbox.modExp(y, this.d, this.n);
 	}
 	
 	public String bigIntegerToString(BigInteger b) {
