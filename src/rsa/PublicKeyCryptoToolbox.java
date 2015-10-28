@@ -41,22 +41,6 @@ public class PublicKeyCryptoToolbox {
 					eeaPrevResult.getX().subtract((a.divide(b)).multiply(eeaPrevResult.getY())));
 		}
 	}
-
-	private static ArrayList<Integer> listBit(BigInteger a){
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		System.out.print("Binary representation of " + a + ": ");
-		for (int i=a.bitLength()-1; i>=0; i--) {
-			if (a.testBit(i)==true) {
-				System.out.print("1");
-				list.add(1);
-			} else {
-				System.out.print("0");
-				list.add(0);
-			}
-		}
-		System.out.println("");
-		return list;
-	}
 	
 	static public BigInteger modExp(BigInteger a, BigInteger b, BigInteger m) {
 
@@ -102,14 +86,14 @@ public class PublicKeyCryptoToolbox {
 		BigInteger d = new BigInteger("1"),one = new BigInteger("1"), nMinus1 = n.subtract(one);
 		BigInteger x;
 		
-		for (int i= nMinus1.bitLength(); i>0; i--) 
+		for (int i= nMinus1.bitLength(); i>=0; i--) 
 		{
 			x = d;
 			d = (d.multiply(d)).mod(n);
 			
 			if((d.compareTo(one) == 0) && (x.compareTo(one) != 0) && (x.compareTo(nMinus1) != 0))
 				return true;
-			if(n.testBit(i) == true)
+			if(nMinus1.testBit(i) == true)
 				d = (d.multiply(a)).mod(n);
 		}
 		
@@ -126,10 +110,10 @@ public class PublicKeyCryptoToolbox {
 		 ************************************************************/
 		BigInteger a;
 		
-		for(int i = 1; i < s; i++)
+		for(int i = 1; i <= s; i++)
 		{
 			a = randomInteger(n.subtract(new BigInteger("1")));
-			
+			//System.out.println("Size of a : " + a.bitLength() + "n size : " + n.bitLength());
 			if(witness(a,n))
 				return false;
 		}
