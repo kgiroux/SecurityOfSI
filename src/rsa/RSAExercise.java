@@ -34,12 +34,13 @@ public class RSAExercise {
 		/************************************************************
 		 * Insert the code of Exercise 10 below this comment!
 		 ************************************************************/
+		// Create two prime number p and q in order to create private and public key for the RSA encryption and decryption
+		
 		do{
 			System.out.println("Prime Number");
 			p = pkct.randomPrime(bit_length, s);
 			q = pkct.randomPrime(bit_length, s);
 		}while(p.compareTo(q) == 0);
-		
 		n = p.multiply(q);
 		phin = (p.subtract(BigInteger.ONE)).multiply((q.subtract(BigInteger.ONE)));
 		EEAResult eea;

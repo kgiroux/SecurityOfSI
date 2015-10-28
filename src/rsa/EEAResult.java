@@ -68,7 +68,9 @@ public class EEAResult {
 		/************************************************************
 		 * Insert the code of Exercise 5a below this comment!
 		 **************1**********************************************/
-		if(d.compareTo(new BigInteger("1")) == 0){
+		
+		// Return is two number are relatively prime;
+		if(d.compareTo(BigInteger.ONE) == 0){
 			return true;
 		}else{
 			return false;

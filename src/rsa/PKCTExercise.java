@@ -3,9 +3,6 @@ package rsa;
  * @author Kévin Giroux & Kévin Pace
  */
 import java.math.BigInteger;
-import java.util.Vector;
-
-import com.sun.corba.se.impl.ior.NewObjectKeyTemplateBase;
 
 public class PKCTExercise {
 	

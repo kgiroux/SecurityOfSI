@@ -20,6 +20,7 @@ public class RSAEncryptor {
 		/************************************************************
 		 * Insert the code of Exercise 10b below this comment!
 		 ************************************************************/
+		// Perform the decryption algorithm
 		return PublicKeyCryptoToolbox.modExp(x, this.e, this.n);
 
 	}

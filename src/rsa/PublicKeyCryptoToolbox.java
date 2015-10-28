@@ -51,8 +51,11 @@ public class PublicKeyCryptoToolbox {
 		 ************************************************************/
 		BigInteger d = new BigInteger("1");
 		for (int i=b.bitLength()-1; i>=0; i--) {
+			// Computing d by d and get the modulo of this result => store in d
 			d = d.multiply(d).mod(m);
+			// Test if the bit n° I is 1 
 			if (b.testBit(i)==true) {
+				// Computing d by a and get the modulo of this result => store in d
 				d = d.multiply(a).mod(m);
 			}
 		}
@@ -75,30 +78,32 @@ public class PublicKeyCryptoToolbox {
 		int nbBit = n.bitLength();
 		BigInteger result;
 		do{
+			// Create a random integer between one and n
 			result = new BigInteger(nbBit,prng);
-		}while(result.compareTo(new BigInteger("1")) <0 || result.compareTo(n) > 0);
+		}while(result.compareTo(BigInteger.ONE) <0 || result.compareTo(n) > 0);
 		return result;
 	}
 
 	public boolean witness(BigInteger a, BigInteger n) {
-
+		
 		/************************************************************
 		 * Insert the code of Exercise 8a below this comment!
 		 ************************************************************/
-		BigInteger d = new BigInteger("1"), nMinus1 = n.subtract(BigInteger.ONE);
+		// This function return true if the number is composite and false if the number is prime
+		BigInteger d = BigInteger.ONE, nMinus1 = n.subtract(BigInteger.ONE);
 		BigInteger x;
 		
 		for (int i= nMinus1.bitLength(); i>=0; i--) 
 		{
+			
 			x = d;
 			d = (d.multiply(d)).mod(n);
-			
 			if((d.compareTo(BigInteger.ONE) == 0) && (x.compareTo(BigInteger.ONE) != 0) && (x.compareTo(nMinus1) != 0))
 				return true;
 			if(nMinus1.testBit(i) == true)
 				d = (d.multiply(a)).mod(n);
 		}
-		
+		// To evaluate if the number is prime, we have to check if d is equal to 1, in this case, this number is prime, in the other case, this number is composite
 		if(d.compareTo(BigInteger.ONE) != 0)
 			return true;
 			
@@ -111,14 +116,16 @@ public class PublicKeyCryptoToolbox {
 		 * Insert the code of Exercise 8b below this comment!
 		 ************************************************************/
 		BigInteger a;
-		
+		// Run this function s time for evaluating if this number n is prime to a random number a
 		for(int i = 1; i <= s; i++)
 		{
 			a = randomInteger(n.subtract(new BigInteger("1")));
-			//System.out.println("Size of a : " + a.bitLength() + "n size : " + n.bitLength());
+			// The witness result will give us if a and n are relatively prime 
 			if(witness(a,n))
+				// the number n is not prime with a
 				return false;
 		}
+		// the number n is relatively prime with all the random a number so we can consider that n is prime
 		return true;
 	}
 
@@ -127,7 +134,7 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 8d below this comment!
 		 ************************************************************/		
-		BigInteger result,n;
+		BigInteger n;
 		boolean isPrime = false;
 		
 		do
